@@ -28,6 +28,7 @@ const Cabecalho = (props) => {
             marginBottom: "40px",
         },
         img: {
+            display: "block",
             width: "200px",
             marginLeft: "auto",
             marginRight: "auto",
