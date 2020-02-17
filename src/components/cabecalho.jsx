@@ -29,15 +29,13 @@ const Cabecalho = (props) => {
         },
         img: {
             width: "200px",
-            marginRight: "auto",
             marginLeft: "auto",
+            marginRight: "auto",
         }
     }
     return (
-        <div>
-            <div>
-                <img src={logo} alt="logo" style={style.img} class="center" />
-            </div>
+        <div style={{justifyContent: "center"}}>
+            <img src={logo} alt="logo" style={style.img} className="center" />
             <div>
                 <Breadcrumbs style={style.table}>
                     <Typography color="textPrimary">
