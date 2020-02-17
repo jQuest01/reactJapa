@@ -1,7 +1,7 @@
 const iNITIAL_STATE = {
     userData: {
     },
-    emprestimos: [],
+    prestacao: [],
     url: 'http://www.mocky.io/v2/5c923b0932000029056bce39'
 }
 
@@ -13,7 +13,7 @@ export default function (state = iNITIAL_STATE, action) {
                 ...state, useData: action.payload
             }
 
-        case 'GET_EMPRESTIMOS':
+        case 'GET_PRESTACOES':
             return {
                 ...state, emprestimos: action.payload
             }

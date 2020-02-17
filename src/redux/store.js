@@ -1,11 +1,11 @@
 import { createStore } from 'redux'
 import { combineReducers } from 'redux'
-import emprestimoReducer from './reducers'
+import prestacaoReducer from './reducers'
 
 const store = createStore(
     combineReducers(
         {
-            emprestimo: emprestimoReducer
+            prestacao: prestacaoReducer
         }
     )
 )

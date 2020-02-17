@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export function getEmprestimos() {
+export function getPrestacao() {
 
     let url = 'http://www.mocky.io/v2/5c923b0932000029056bce39'
 
@@ -14,15 +14,15 @@ export function getEmprestimos() {
         debugger 
         axios.get(url).then(res => {
             let data = res.data
-            let emprestimos = data.installments
-            setContent(emprestimos)
+            let prestacao = data.installments
+            setContent(prestacao)
         })
     }
     
     getContent()
 
     return {
-        type: 'GET_EMPRESTIMOS',
+        type: 'GET_PRESTACOES',
         payload: content
     }
 }

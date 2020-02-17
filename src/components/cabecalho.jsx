@@ -3,13 +3,10 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import { bindActionCreators } from 'redux';
 import { getAllData } from '../redux/actions'
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import { TableContainer } from '@material-ui/core';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Typography from '@material-ui/core/Typography';
+import logo from '../imgs/logo.png';
+
 
 const Cabecalho = (props) => {
 
@@ -20,60 +17,49 @@ const Cabecalho = (props) => {
             let data = res.data
             setData(data)
         })
-    }, [])
-    const StyledTableCell = withStyles(theme => ({
-        head: {
-            backgroundColor: theme.palette.common.default,
-            color: theme.palette.common.black,
-        },
-        body: {
-            fontSize: 14,
-        },
-    }))(TableCell);
+    }, [props.url])
 
-    const StyledTableRow = withStyles(theme => ({
-        root: {
-            '&:nth-of-type(odd)': {
-                backgroundColor: theme.palette.background.default,
-            },
-        },
-    }))(TableRow);
-
-    const useStyles = makeStyles({
+    const style = {
         table: {
-            minWidth: 700,
+            align: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: "40px",
+            marginBottom: "40px",
         },
-    });
-
-    const classes = useStyles();
+        img: {
+            width: "200px",
+            marginRight: "auto",
+            marginLeft: "auto",
+        }
+    }
     return (
-        <TableContainer component={Paper}>
-            <Table style={{float: "left", width: "30%"}} className={classes.table} aria-label="simple table">
-                <TableBody>
-                    <StyledTableRow>
-                        <StyledTableCell align="left">Valor Pago</StyledTableCell>
-                        <StyledTableCell align="right">R$ {data.amountPayd},00</StyledTableCell>
-                    </StyledTableRow>
-                    <StyledTableRow>
-                        <StyledTableCell align="left">Juros Mensais</StyledTableCell>
-                        < StyledTableCell align="right">{data.monthlyInterest}%</StyledTableCell>
-                    </StyledTableRow>
-                    <StyledTableRow>
-                        <StyledTableCell align="left">Total a Pagar</StyledTableCell>
-                        < StyledTableCell align="right">R$ {data.amountTaken + data.totalAmountInTaxes},00</StyledTableCell>
-                    </StyledTableRow>
-                    <StyledTableRow>
-                        <StyledTableCell align="left">Total de Juros</StyledTableCell>
-                        < StyledTableCell align="right">R$ {data.totalAmountInTaxes},00</StyledTableCell>
-                    </StyledTableRow>
-                </TableBody>
-            </Table >
-        </TableContainer>
+        <div>
+            <div>
+                <img src={logo} alt="logo" style={style.img} class="center" />
+            </div>
+            <div>
+                <Breadcrumbs style={style.table}>
+                    <Typography color="textPrimary">
+                        <span align="center"><strong>Valor Pago R$ {data.amountPayd},00</strong></span>
+                    </Typography>
+                    <Typography color="textPrimary">
+                        <span align="center"><strong>Juros Mensais {data.monthlyInterest}%</strong></span>
+                    </Typography>
+                    <Typography color="textPrimary">
+                        <span align="center"><strong>Total a Pagar: R$ {data.amountTaken + data.totalAmountInTaxes},00</strong></span>
+                    </Typography>
+                    <Typography color="textPrimary">
+                        <span align="center"><strong>Total de Juros {` R$ ${data.totalAmountInTaxes},00`}</strong></span>
+                    </Typography>
+                </Breadcrumbs>
+            </div>
+        </div>
     )
 }
 
 const mapstateToProps = state => ({
-    url: state.emprestimo.url
+    url: state.prestacao.url
 })
 
 function mapDispatchToProps(dispatch) {

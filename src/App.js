@@ -1,13 +1,17 @@
 import React from 'react';
-import Emprestimos from './components/emprestimos'
+import './App.css'
+import Prestacoes from './components/prestacoes'
+import LadoEsq from './components/divEsq'
+import Container from '@material-ui/core/Container';
 import Cabecalho from './components/cabecalho'
 
 function App() {
   return (
-    <React.Fragment>
+    <Container fixed>
+      <LadoEsq />
       <Cabecalho />
-      <Emprestimos />
-    </React.Fragment>
+      <Prestacoes />
+    </Container>
 
   );
 }
